@@ -33,4 +33,6 @@ const Index = () => {
       <Button onClick={() => addProduct.mutate({ name: 'New Product', price: 10 })}>Add Product</Button>
     </div>
   );
+};
 
+export default Index;
