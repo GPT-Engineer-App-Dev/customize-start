@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import { Layout } from "./components/layouts/navbar";
+import Layout from "./layouts/navbar"; // Corrected import path
 import Index from "./pages/Index.jsx";
 import { Dashboard } from "lucide-react";
 
