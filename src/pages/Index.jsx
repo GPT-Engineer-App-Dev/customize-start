@@ -1,10 +1,27 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useProducts } from "../integrations/supabase/index.js";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 const Index = () => {
+  const { data: products, error, isLoading } = useProducts();
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
+
   return (
-    <div className="text-center">
-      <h1 className="text-3xl">Your Blank Canvas</h1>
-      <p>Chat with the agent to start making edits.</p>
+    <div className="grid gap-4">
+      {products.map((product) => (
+        <Card key={product.id}>
+          <CardHeader>
+            <CardTitle>{product.name}</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p>{product.description}</p>
+            <p>${product.price}</p>
+            <Button variant="outline">Add to Cart</Button>
+          </CardContent>
+        </Card>
+      ))}
     </div>
   );
 };
